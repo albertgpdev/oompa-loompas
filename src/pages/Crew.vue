@@ -1,6 +1,57 @@
 <template>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo nisi nemo quas reiciendis inventore aperiam quaerat dicta tenetur perferendis pariatur autem at magnam cum ullam, eaque porro quod! Aliquam, veritatis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi nesciunt error voluptatibus ipsum nisi perspiciatis, deserunt possimus molestiae illum maxime, vel excepturi facere fugit culpa nam odit sit doloribus vitae.</p>
+	<div class="album py-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-12 col-md-3 offset-md-8">
+					<filters></filters>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-12 col-md-4 oompa" v-for="(oompa, key) in oompas">
+					<card
+						:oompa = "oompa"
+						:key = "key"
+					></card>
+				</div>
+				
+			</div>
+		</div>
+	</div>
 </template>
 <script>
+	import Card from '@/components/Card';
+	import Filters from '@/components/Filters';
+	import oompaTypes from '@/types/oompa-loompas';
+	import {mapGetters , mapActions} from 'vuex'
 
+	export default {
+		name:'crew-list',
+		components: {
+			Card,
+			Filters
+		},
+		data() {
+            return {
+             	
+           } 
+        },
+        methods: {
+        	...mapActions({
+        		fetchOompas: oompaTypes.actions.fetchOompas
+        	}),
+        },
+        computed: {
+        	...mapGetters({
+        		oompas: oompaTypes.getters.oompas
+        	})
+        },
+        mounted() {
+        	this.fetchOompas()
+        }
+}
 </script>
+<style>
+	.oompa{
+		margin-top:10px;
+	}
+</style>

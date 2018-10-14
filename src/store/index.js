@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 //modulos y tipos
 import globalTypes from '@/types/global';
-import oompaLoompas from '@/modules/oompa-lompas';
+import oompaLoompas from '@/modules/oompa-loompas';
 
 export const store = new Vuex.Store({
 	state: {

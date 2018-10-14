@@ -1,8 +1,8 @@
 <template>
-  <div id="app">
+  <main id="app" role="main">
     <navbar></navbar>
     <router-view></router-view>
-  </div>
+  </main>
 </template>
 
 <script>

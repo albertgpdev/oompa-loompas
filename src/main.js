@@ -1,4 +1,15 @@
 // Dependencies
+require('popper.js')
+require('jquery')
+require('bootstrap')
+import 'bootstrap/dist/css/bootstrap.css';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+library.add(faSearch)
+Vue.component('font-awesome-icon', FontAwesomeIcon)
+
+
 import Vue from 'vue'
 import App from './App.vue'
 
@@ -6,11 +17,7 @@ import router from '@/router'
 
 import VueResource from 'vue-resource';
 Vue.use(VueResource);
-Vue.http.options.root = 'http://localhost:8080/';
-Vue.http.interceptors.push((request, next) => {
-	next();
-})
-
+Vue.http.options.root = "https://2q2woep105.execute-api.eu-west-1.amazonaws.com/napptilus/oompa-loompas";
 
 import BlockUI from 'vue-blockui';
 Vue.use(BlockUI);

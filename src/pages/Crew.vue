@@ -39,14 +39,28 @@
         	...mapActions({
         		fetchOompas: oompaTypes.actions.fetchOompas
         	}),
+        	scroll () {
+			    window.onscroll = () => {
+			      	let bottomOfWindow = document.documentElement.scrollTop + window.innerHeight === document.documentElement.offsetHeight;
+
+			      	if (bottomOfWindow) {
+			      		let nextPage = this.currentPages + 1
+			        	this.fetchOompas(nextPage)
+			      	}
+			    };
+			},
         },
         computed: {
         	...mapGetters({
         		oompas: oompaTypes.getters.oompas
-        	})
+        	}),
+        	currentPages: function() {
+        		return Math.floor(this.oompas.length / 25)
+        	}
         },
         mounted() {
         	this.fetchOompas()
+        	this.scroll();
         }
 }
 </script>

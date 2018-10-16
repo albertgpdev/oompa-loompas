@@ -14,5 +14,6 @@ export default nampespace('oompa-loompas', {
 		'recivedOompas',
 		'setSearch',
 		'clearFilters',
+		'incrementPage'
 	]
 }) 

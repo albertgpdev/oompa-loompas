@@ -2,7 +2,7 @@
 	<router-link class="card" style="width: 18rem;" tag="div" :to="{ name: 'oompa-loompa-details', params: { id: oompa.id }  }">
 		<img class="card-img-top" :src="oompa.image" :alt="oompa.image">
 		<div class="card-body">
-			<h5 class="card-title">{{ oompa.first_name }} {{ oompa.last_name }}</h5>
+			<h5 class="card-title">{{ oompa.name }}</h5>
 			<p class="card-text">{{ oompa.gender | gender }}</p>
 			<p class="card-text">{{ oompa.profession }}</p>
 		</div>
@@ -17,6 +17,11 @@
 				required:true
 			}
 		},
+		data() {
+			return {
+				
+			}
+		},
 		filters: {
 			gender: function (value) {
 			    if (!value) return ''
@@ -28,7 +33,8 @@
 				} else {
 					return 'Undefined'
 				}
-			}
+			},
+		
 		}
 	}
 </script>

@@ -1,21 +1,26 @@
 import types from '@/types/oompa-loompas';
 import globalTypes from '@/types/global';
 import Vue from 'vue';
+import lscache from 'lscache'
 
 const state = {
-	oompas: [],
+	oompas: lscache.get('oompas'),
 	query: {
 		search:'',
-	}
+	},
+	page: 1,
 };
 const actions = {
-	[types.actions.fetchOompas]: ({commit}) => {
+	[types.actions.fetchOompas]: ({commit}, page = 1) => {
 		commit(globalTypes.mutations.startProcessing)
-		Vue.http.get('?page=1').then(oompas => {
-			commit(types.mutations.recivedOompas, {apiResponse: oompas})
-			commit(globalTypes.mutations.stopProcessing)
+		commit(types.mutations.incrementPage, page)
+		if(!lscache.get('oompas') || lscache.get('oompas') === 'undefined' || (page * 25 >= lscache.get('oompas').length)){
+			Vue.http.get('?page=' + page).then(oompas => {
+				commit(types.mutations.recivedOompas, {apiResponse: oompas.data.results})
+				commit(globalTypes.mutations.stopProcessing)
 
-		})
+			})
+		}
 	}
 };
 
@@ -25,8 +30,7 @@ const getters = {
 		let oompas = state.oompas
 		if(state.query.search) {
 			oompas = oompas
-						.filter(oompa => oompa.first_name
-										.concat(oompa.last_name)
+						.filter(oompa => oompa.name
 										.concat(oompa.profession)
 										.trim()
 										.toLowerCase()
@@ -34,13 +38,30 @@ const getters = {
 												 .trim()
 												 .toLowerCase()))
 		}
+		oompas = oompas.slice(0, state.page * 25)
 		return oompas;
 	}
 };
 
 const mutations = {
 	[types.mutations.recivedOompas]: (state, {apiResponse}) => {
-		state.oompas = apiResponse.data.results
+		let  list = []
+		apiResponse.forEach((item, index) => {
+			let oompa = {}
+			oompa.id = item.id
+			oompa.name = item.first_name + ' ' + item.last_name
+			oompa.gender = item.gender
+			oompa.profession = item.profession
+			oompa.image = item.image
+			oompa.timestamp = new Date().getTime()
+			list.push(oompa)
+		})
+		if(lscache.get("oompas")){
+			list = lscache.get("oompas").concat(list)
+		}
+		lscache.set("oompas", list, 360000 * 24);
+
+		state.oompas = lscache.get("oompas")
 	},
 	[types.mutations.setSearch]: (state, query) =>  {
 		state.query.search = query
@@ -49,7 +70,10 @@ const mutations = {
 		state.query= {
 			search: ''
 		}
-	}
+	},
+	[types.mutations.incrementPage]: (state, page) =>  {
+		state.page = page
+	},
 };
 
 export default {

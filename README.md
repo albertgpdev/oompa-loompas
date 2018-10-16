@@ -1,5 +1,10 @@
 # oompa-loompas
 
+## Project Download
+```
+git clone https://github.com/albertgpdev/oompa-loompas.git
+```
+
 ## Project setup
 ```
 npm install

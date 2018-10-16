@@ -17,11 +17,6 @@
 				required:true
 			}
 		},
-		data() {
-			return {
-				
-			}
-		},
 		filters: {
 			gender: function (value) {
 			    if (!value) return ''

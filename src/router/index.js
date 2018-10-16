@@ -1,4 +1,4 @@
-// Dependecies
+// Dependencies
 import Vue from 'vue';
 import Router from 'vue-router';
 Vue.use(Router);
@@ -11,9 +11,8 @@ import Details from '@/pages/Details.vue';
 import oompaLoompas from '@/types/oompa-loompas';
 import globalTypes from '@/types/global';
 
-//  Global store
+// Store
 import {store} from '@/main';
-//  .global store
 
 const router = new Router({
 	mode: 'history',

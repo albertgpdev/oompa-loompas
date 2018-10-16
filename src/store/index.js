@@ -1,11 +1,10 @@
+// Dependencies
 import Vue from 'vue'
 
-//vuex
 import Vuex from 'vuex';
 Vue.use(Vuex);
-// .vuex
 
-//modulos y tipos
+// types and modules
 import globalTypes from '@/types/global';
 import oompaLoompas from '@/modules/oompa-loompas';
 

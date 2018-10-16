@@ -6,12 +6,13 @@ export default nampespace('oompa-loompas', {
 		'fetchOompa',
 	],
 	getters: [
+		'search',
 		'oompas',
 		'oompa',
-		'search'
 	],
 	mutations: [
 		'recivedOompas',
+		'recivedOompa',
 		'setSearch',
 		'clearFilters',
 		'incrementPage'

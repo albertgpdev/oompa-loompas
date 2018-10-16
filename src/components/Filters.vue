@@ -19,11 +19,6 @@
 	import oompaTypes from '@/types/oompa-loompas';
 	export default {
 		name: 'filters',
-		data() {
-			return {
-
-			}
-		},
 		methods:{
 			...mapMutations({
 				setSearch: oompaTypes.mutations.setSearch,

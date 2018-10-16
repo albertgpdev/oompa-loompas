@@ -4,11 +4,11 @@ require('jquery')
 require('bootstrap')
 import 'bootstrap/dist/css/bootstrap.css';
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faSearch, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 library.add(faSearch)
+library.add(faSpinner)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
-
 
 import Vue from 'vue'
 import App from './App.vue'

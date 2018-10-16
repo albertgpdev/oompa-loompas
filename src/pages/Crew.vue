@@ -30,14 +30,9 @@
 			Card,
 			Filters
 		},
-		data() {
-            return {
-             	
-           } 
-        },
         methods: {
         	...mapActions({
-        		fetchOompas: oompaTypes.actions.fetchOompas
+        		fetchOompas: oompaTypes.actions.fetchOompas,
         	}),
         	scroll () {
 			    window.onscroll = () => {
@@ -49,6 +44,7 @@
 			      	}
 			    };
 			},
+			
         },
         computed: {
         	...mapGetters({

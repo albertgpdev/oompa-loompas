@@ -8,6 +8,7 @@ v9.10.1
 ## Project Download
 ```
 git clone https://github.com/albertgpdev/oompa-loompas.git
+cd oompa-loompas
 ```
 
 ## Project setup

@@ -17,9 +17,11 @@
 				required:true
 			}
 		},
-		filters: {
+		filters: {
 			gender: function (value) {
-			    if (!value) return ''
+			    if (!value) {
+			    	return ''
+			    }
 			    value = value.toString()
 				if (value === 'F') {
 					return 'Woman'

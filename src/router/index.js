@@ -7,13 +7,6 @@ Vue.use(Router);
 import Crew from '@/pages/Crew.vue';
 import Details from '@/pages/Details.vue';
 
-// Types
-import oompaLoompas from '@/types/oompa-loompas';
-import globalTypes from '@/types/global';
-
-// Store
-import {store} from '@/main';
-
 const router = new Router({
 	mode: 'history',
 	linkActiveClass: 'active',

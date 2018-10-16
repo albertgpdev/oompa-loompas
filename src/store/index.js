@@ -9,7 +9,7 @@ import globalTypes from '@/types/global';
 import oompaLoompas from '@/modules/oompa-loompas';
 
 export const store = new Vuex.Store({
-	state: {
+	state: {
 		processing: false,
 		language: window.localStorage.getItem('selected_language') ? window.localStorage.getItem('selected_language') : 'en',	
 	},

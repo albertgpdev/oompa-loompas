@@ -1,5 +1,5 @@
 <template>
-	 <div class="input-group">
+	<div class="input-group">
 	 	<input 
 			type="search" 
 			v-model="search"
@@ -25,7 +25,7 @@
 				clearFilters: oompaTypes.mutations.clearFilters,
 			})
 		},
-		computed : {
+		computed: {
 			...mapGetters({
 				query: oompaTypes.getters.search,
 			}),

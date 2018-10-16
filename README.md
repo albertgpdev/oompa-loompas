@@ -1,6 +1,6 @@
 # oompa-loompas
 
-## Node version 
+## Node version
 ```
 v9.10.1
 ```
